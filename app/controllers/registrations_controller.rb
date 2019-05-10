@@ -12,7 +12,7 @@ class RegistrationsController < Devise::RegistrationsController
     # resource is holding the defination of resource = User.new({email: 'p1@gmail.com', password: '1234567'})
     # 
     yield resource if block_given?
-    if resource.persisted? # the persisted method checks if the records exists in the data base 
+    if resource.persisted? # the persisted method checks if the records exists in the data base
       if resource.active_for_authentication? # it checks whether the resource is active for the authentication to be done
         sign_up(resource_name, resource)
         render json: {resource: resource, location: after_sign_up_path_for(resource), notice: "Succesfully Registered User" }
