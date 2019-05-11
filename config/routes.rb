@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   namespace :api, format: :json do
     namespace :v1, format: :json do
-      devise_for :users, controllers: { registrations: 'api/v1/registrations' },format: :json
-      resources :registrations
+      devise_scope :user do
+        post 'users' => 'registrations#create'
+      end
     end
-  end    
+  end
+  devise_for :users, controllers: { registrations: 'api/v1/registrations' },format: :json
+  resources :registrations
   match '*a', :to => 'errors#routing', via: :get
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

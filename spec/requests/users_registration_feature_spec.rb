@@ -11,11 +11,11 @@ RSpec.describe 'Request specs' do
         }
       }
     end
-    before(:example) { post '/users', params: params }
+    before(:example) { post '/api/v1/users', params: params }
     it 'when the params are correct' do
       expect(response.content_type).to eq("application/json")
       expect(response).to have_http_status(201)
-      expect(JSON.parse(response.body)['notice']).to eq('Succesfully Registered User')
+      expect(JSON.parse(response.body)['notice']).to eq('Successfully Registered User')
     end
   end
   context 'when the user request goes with incorrect uri',type: :request do 
