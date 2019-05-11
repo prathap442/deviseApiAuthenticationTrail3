@@ -1,4 +1,5 @@
 require 'rails_helper.rb'
+# frozen_string_literal: true
 
 RSpec.describe 'Request specs' do
   context 'when the user request goes with correct url and params', type: :request do
