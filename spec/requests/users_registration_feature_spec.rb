@@ -14,7 +14,7 @@ RSpec.describe 'Request specs' do
     before(:example) { post '/users', params: params }
     it 'when the params are correct' do
       expect(response.content_type).to eq("application/json")
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(201)
       expect(JSON.parse(response.body)['notice']).to eq('Succesfully Registered User')
     end
   end
